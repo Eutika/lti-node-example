@@ -31,7 +31,7 @@ npm install -g localtunnel
 
 The Example Tool can be dropped into a Platform so that you can experience the Library's usage in a live environment.  This demo uses the Moodle's sandbox to Register the Tool with the Moodle Platform. To do this:
 
-1. Login to https://demo.moodle.net with credentials:
+1. Login to https://0.0.0.0 with credentials:
   ```
   Username: admin 
   Password: sandbox
@@ -93,7 +93,7 @@ Go to `http://localhost:3000/` in your browser.  The example walks through what 
 
 > 1. Clicking the 'Initiate Tool from LMS' button will generate a properly formatted OIDC Login Request that a Platform would create:
 > ```java
-> { iss: 'https://demo.moodle.net',
+> { iss: 'https://0.0.0.0',
 >   target_link_uri: 'https://localtunnelname.localtunnel.me',
 >   login_hint: '9',
 >   lti_message_hint: '377' }
@@ -119,7 +119,7 @@ Go to `http://localhost:3000/` in your browser.  The example walks through what 
 > { nonce: 'oNa1yWsS8erQA2iYqYzEi4pbP',
 >   iat: 1564506231,
 >   exp: 1564506291,
->   iss: 'https://demo.moodle.net',
+>   iss: 'https://0.0.0.0',
 >   aud: 'uuYLGWBmhhuZvBf',
 >   'https://purl.imsglobal.org/spec/lti/claim/deployment_id': '2',
 >   'https://purl.imsglobal.org/spec/lti/claim/target_link_uri': 'https://localtunnelname.localtunnel.me/',
@@ -142,11 +142,11 @@ Go to `http://localhost:3000/` in your browser.  The example walks through what 
 >    { locale: 'en',
 >      document_target: 'window',
 >      return_url:
->       'https://demo.moodle.net/mod/lti/return.php?course=47&launch_container=4&instanceid=4&sesskey=xcsU4krTwV' },
+>       'https://0.0.0.0/mod/lti/return.php?course=47&launch_container=4&instanceid=4&sesskey=xcsU4krTwV' },
 >   'https://purl.imsglobal.org/spec/lti/claim/tool_platform':
 >    { family_code: 'moodle',
 >      version: '2019052000.01',
->      guid: 'demo.moodle.net',
+>      guid: '0.0.0.0',
 >      name: 'Moodle Demo',
 >      description: 'Moodle Demo Sandbox' },
 >   'https://purl.imsglobal.org/spec/lti/claim/version': '1.3.0',
@@ -157,12 +157,12 @@ Go to `http://localhost:3000/` in your browser.  The example walks through what 
 >         'https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly',
 >         'https://purl.imsglobal.org/spec/lti-ags/scope/score' ],
 >      lineitems:
->       'https://demo.moodle.net/mod/lti/services.php/47/lineitems?type_id=2',
+>       'https://0.0.0.0/mod/lti/services.php/47/lineitems?type_id=2',
 >      lineitem:
->       'https://demo.moodle.net/mod/lti/services.php/47/lineitems/109/lineitem?type_id=2' },
+>       'https://0.0.0.0/mod/lti/services.php/47/lineitems/109/lineitem?type_id=2' },
 >   'https://purl.imsglobal.org/spec/lti-nrps/claim/namesroleservice':
 >    { context_memberships_url:
->       'https://demo.moodle.net/mod/lti/services.php/CourseSection/47/bindings/2/memberships',
+>       'https://0.0.0.0/mod/lti/services.php/CourseSection/47/bindings/2/memberships',
 >      service_versions: [ '1.0', '2.0' ] } }
 > ```
 > 

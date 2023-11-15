@@ -42,7 +42,7 @@ app.set("view engine", "ejs");
 
 /** Setup MongoDB to store Platform data
 */
-mongoose.connect('mongodb://localhost:27017/TESTLTI', {
+mongoose.connect('mongodb://0.0.0.0:27017/TESTLTD', {
   useNewUrlParser: true, 
 },
   (err) => {
@@ -53,13 +53,13 @@ mongoose.connect('mongodb://localhost:27017/TESTLTI', {
 mongoose.Promise = Promise;
 
 registerPlatform(
-  'https://demo.moodle.net',
+  'http://0.0.0.0',
   'moodle',
-  '2ITIeerRc3T57WZ',
-  'https://demo.moodle.net/mod/lti/auth.php',
-  'https://demo.moodle.net/mod/lti/token.php',
-  'https://piedpiper3.localtunnel.me/project/submit',
-  { method: 'JWK_SET', key: 'https://demo.moodle.net/mod/lti/certs.php' }
+  'MYji6PNOBDpJrv5',
+  'http://0.0.0.0/mod/lti/auth.php',
+  'http://0.0.0.0/mod/lti/token.php',
+  'http://0.0.0.0:3000/project/submit',
+  { method: 'JWK_SET', key: 'http://0.0.0.0/mod/lti/certs.php' }
 );
 
 app.get('/publickey/:name', async (req, res) => {
@@ -160,7 +160,7 @@ app.get("/", (req, res) => {
 app.get('/demo/oidc', (req, res) => {
   //DEMO:  Sends an OIDC Login Response for demo purposes
   req.body = { 
-    iss: 'https://demo.moodle.net',
+    iss: 'http://0.0.0.0',
     target_link_uri: 'https://node-lti-v1p3.herokuapp.com/',
     login_hint: '9',
     lti_message_hint: '377' 
@@ -170,7 +170,7 @@ app.get('/demo/oidc', (req, res) => {
     scope: 'openid',
     response_type: 'id_token',
     client_id: req.session.platform_DBinfo.consumerToolClientID,
-    redirect_uri: 'https://piedpiper.localtunnel.me/project/submit',
+    redirect_uri: 'http://0.0.0.0:3000/project/submit',
     login_hint: req.body.login_hint,
     state: create_unique_string(30, true),
     response_mode: 'form_post',
@@ -184,10 +184,10 @@ app.get('/demo/project/submit', (req, res) => {
   let request_object = { nonce: 'g2f2cdPpYqPK7AwHcyXhjf5VL',
   iat: 1564506231,
   exp: 1564506291,
-  iss: 'https://demo.moodle.net',
+  iss: 'http://0.0.0.0',
   aud: 'uuYLGWBmhhuZvBf',
   'https://purl.imsglobal.org/spec/lti/claim/deployment_id': '2',
-  'https://purl.imsglobal.org/spec/lti/claim/target_link_uri': 'https://node-lti-v1p3.herokuapp.com//',
+  'https://purl.imsglobal.org/spec/lti/claim/target_link_uri': 'https://eutika.com.com/',
   sub: '9',
   'https://purl.imsglobal.org/spec/lti/claim/roles':
   [ 'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner' ],
@@ -211,7 +211,7 @@ app.get('/demo/project/submit', (req, res) => {
     'https://purl.imsglobal.org/spec/lti/claim/tool_platform':
      { family_code: 'moodle',
        version: '2019052000.01',
-       guid: 'demo.moodle.net',
+       guid: '0.0.0.0',
        name: 'Moodle Demo',
        description: 'Moodle Demo Sandbox' },
     'https://purl.imsglobal.org/spec/lti/claim/version': '1.3.0',
